@@ -1,0 +1,1926 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Whole Class Health Final Study Guide</title>
+  <style>
+    :root {
+      --bg: #f4ecdd;
+      --paper: #fffaf1;
+      --paper-2: #fbf3e5;
+      --ink: #28241f;
+      --muted: #746b5d;
+      --soft: #8d8270;
+      --line: #d7c9ad;
+      --line-strong: #bfae88;
+      --teal: #1f6f68;
+      --teal-2: #e3f0ed;
+      --clay: #b65342;
+      --clay-2: #f6e2dc;
+      --gold: #a97822;
+      --gold-2: #f3e7ca;
+      --sage: #2f7c49;
+      --sage-2: #e5f1e4;
+      --blue: #325f7e;
+      --blue-2: #e5edf4;
+      --shadow: 0 18px 48px rgba(53, 42, 24, .14);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 0%, rgba(166, 120, 36, .16), transparent 28rem),
+        radial-gradient(circle at 100% 10%, rgba(31, 111, 104, .12), transparent 26rem),
+        linear-gradient(180deg, #f9f1e4 0%, var(--bg) 100%);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .25;
+      background-image:
+        linear-gradient(rgba(92, 71, 41, .05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(92, 71, 41, .04) 1px, transparent 1px);
+      background-size: 36px 36px;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      cursor: not-allowed;
+      opacity: .5;
+    }
+
+    .page {
+      position: relative;
+      width: min(1220px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 24px 0 48px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 340px;
+      gap: 18px;
+      align-items: stretch;
+      margin-bottom: 14px;
+    }
+
+    .hero-copy,
+    .hero-panel {
+      background: rgba(255, 250, 241, .88);
+      border: 2px solid rgba(215, 201, 173, .72);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: 28px;
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: .78rem;
+      font-weight: 950;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      font-size: clamp(2.45rem, 7vw, 5.7rem);
+      line-height: .9;
+      max-width: 900px;
+    }
+
+    .hero-copy p {
+      max-width: 810px;
+      margin: 16px 0 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 1.02rem;
+    }
+
+    .hero-panel {
+      padding: 18px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .big-count {
+      display: grid;
+      gap: 2px;
+      padding: 18px;
+      background: var(--ink);
+      color: var(--paper);
+      border-radius: var(--radius);
+    }
+
+    .big-count strong {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 3.6rem;
+      line-height: 1;
+    }
+
+    .big-count span,
+    .mini-stat span {
+      color: rgba(255, 250, 241, .78);
+      font-size: .78rem;
+      font-weight: 900;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .mini-stat {
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      padding: 14px;
+      background: rgba(255, 255, 255, .5);
+    }
+
+    .mini-stat strong {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2rem;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .mini-stat span {
+      color: var(--muted);
+      font-size: .7rem;
+    }
+
+    .topnav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      padding: 10px;
+      margin: 0 0 18px;
+      background: rgba(244, 236, 221, .92);
+      border: 2px solid rgba(215, 201, 173, .76);
+      border-radius: var(--radius);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 10px 24px rgba(53, 42, 24, .09);
+    }
+
+    .nav-btn,
+    .action,
+    .ghost,
+    .option-btn {
+      min-height: 42px;
+      border-radius: var(--radius);
+      font-weight: 900;
+      transition: transform .15s ease, border-color .15s ease, background .15s ease, color .15s ease;
+    }
+
+    .nav-btn {
+      padding: 10px 13px;
+      background: transparent;
+      color: var(--muted);
+    }
+
+    .nav-btn.active,
+    .nav-btn:hover {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .view {
+      display: none;
+    }
+
+    .view.active {
+      display: block;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: end;
+      margin: 26px 0 14px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.7rem, 3vw, 2.9rem);
+      line-height: 1;
+    }
+
+    .section-head p {
+      max-width: 720px;
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .tool-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .control,
+    .search {
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 250, 241, .86);
+      color: var(--ink);
+      min-height: 44px;
+      padding: 10px 12px;
+      font-weight: 800;
+    }
+
+    .search {
+      min-width: min(420px, 100%);
+      flex: 1;
+    }
+
+    .action {
+      padding: 11px 16px;
+      color: var(--paper);
+      background: var(--ink);
+      box-shadow: 0 8px 20px rgba(53, 42, 24, .12);
+    }
+
+    .action:hover,
+    .ghost:hover,
+    .option-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .action.secondary {
+      background: var(--teal);
+    }
+
+    .action.gold {
+      background: var(--gold);
+    }
+
+    .ghost {
+      padding: 10px 14px;
+      color: var(--ink);
+      background: rgba(255, 250, 241, .7);
+      border: 2px solid var(--line);
+    }
+
+    .ghost.active,
+    .ghost.marked {
+      border-color: var(--gold);
+      background: var(--gold-2);
+      color: #6d4810;
+    }
+
+    .dash-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .dash-stat {
+      padding: 16px;
+      border-radius: var(--radius);
+      background: rgba(255, 250, 241, .86);
+      border: 2px solid var(--line);
+      box-shadow: 0 12px 26px rgba(53, 42, 24, .08);
+    }
+
+    .dash-stat strong {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.2rem;
+      line-height: 1;
+    }
+
+    .dash-stat span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: .76rem;
+      font-weight: 950;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .unit-band {
+      margin: 16px 0 20px;
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 250, 241, .75);
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(53, 42, 24, .08);
+    }
+
+    .unit-head {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: center;
+      padding: 18px;
+      border-bottom: 2px solid var(--line);
+      background: linear-gradient(90deg, rgba(255, 255, 255, .42), transparent);
+    }
+
+    .unit-number {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: var(--radius);
+      color: var(--paper);
+      background: var(--teal);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.9rem;
+      font-weight: 900;
+    }
+
+    .unit-head h3 {
+      font-size: clamp(1.25rem, 2.5vw, 2rem);
+      line-height: 1.08;
+    }
+
+    .unit-head p {
+      margin: 5px 0 0;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .unit-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .lesson-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      padding: 14px;
+    }
+
+    .lesson-card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 260px;
+      padding: 16px;
+      border: 2px solid var(--line);
+      border-left: 6px solid var(--teal);
+      border-radius: var(--radius);
+      background: var(--paper);
+    }
+
+    .lesson-meta,
+    .meta-line {
+      color: var(--soft);
+      font-size: .76rem;
+      font-weight: 950;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .lesson-card h4 {
+      font-size: 1.25rem;
+      line-height: 1.12;
+    }
+
+    .lesson-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.42;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: auto;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 6px 8px;
+      border-radius: 999px;
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .75rem;
+      font-weight: 900;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .study-layout {
+      display: grid;
+      grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+      gap: 14px;
+    }
+
+    .lesson-list {
+      display: grid;
+      gap: 8px;
+      align-content: start;
+    }
+
+    .lesson-picker {
+      text-align: left;
+      padding: 12px;
+      border-radius: var(--radius);
+      background: rgba(255, 250, 241, .75);
+      border: 2px solid var(--line);
+      color: var(--ink);
+      font-weight: 900;
+    }
+
+    .lesson-picker.active {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: var(--paper);
+    }
+
+    .lesson-detail {
+      min-height: 480px;
+      padding: 20px;
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 250, 241, .9);
+      box-shadow: var(--shadow);
+    }
+
+    .lesson-detail h2 {
+      font-size: clamp(1.8rem, 4vw, 3.5rem);
+      line-height: .98;
+      margin: 5px 0 10px;
+    }
+
+    .lesson-question {
+      margin: 0 0 16px;
+      padding: 14px;
+      border-left: 6px solid var(--gold);
+      background: var(--gold-2);
+      color: #604215;
+      border-radius: var(--radius);
+      font-weight: 850;
+      line-height: 1.45;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, .72fr);
+      gap: 14px;
+      align-items: start;
+    }
+
+    .detail-block {
+      padding: 16px;
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .42);
+    }
+
+    .detail-block h3 {
+      margin-bottom: 10px;
+      font-size: 1.35rem;
+    }
+
+    .study-list {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    .study-list li + li {
+      margin-top: 8px;
+    }
+
+    .term-list,
+    .numbers-list,
+    .source-grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    .term-item,
+    .number-item,
+    .source-card {
+      padding: 13px;
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+    }
+
+    .term-item strong,
+    .number-item strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--teal);
+    }
+
+    .term-item p,
+    .number-item p,
+    .source-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .number-item b {
+      color: var(--gold);
+      font-size: 1.2rem;
+    }
+
+    .quiz-shell,
+    .flash-shell,
+    .library-shell {
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 250, 241, .86);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    .builder-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .field {
+      display: grid;
+      gap: 6px;
+    }
+
+    .field label {
+      color: var(--soft);
+      font-size: .74rem;
+      font-weight: 950;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .quiz-status {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .progress-wrap {
+      flex: 1;
+      min-width: 180px;
+      height: 12px;
+      border: 2px solid var(--line);
+      border-radius: 999px;
+      overflow: hidden;
+      background: var(--paper-2);
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--teal), var(--gold));
+    }
+
+    .question-card {
+      border: 2px solid var(--line);
+      border-left: 7px solid var(--teal);
+      border-radius: var(--radius);
+      background: var(--paper);
+      padding: 18px;
+    }
+
+    .question-card h3 {
+      font-size: clamp(1.45rem, 3vw, 2.4rem);
+      line-height: 1.08;
+      margin: 8px 0 14px;
+    }
+
+    .hint {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-weight: 800;
+      line-height: 1.4;
+    }
+
+    .options {
+      display: grid;
+      gap: 10px;
+      margin: 14px 0;
+    }
+
+    .option-btn {
+      width: 100%;
+      min-height: 58px;
+      padding: 14px 16px;
+      text-align: left;
+      color: var(--ink);
+      background: rgba(255, 250, 241, .8);
+      border: 2px solid var(--line);
+      line-height: 1.35;
+    }
+
+    .option-btn.selected {
+      border-color: var(--gold);
+      background: var(--gold-2);
+      color: #604215;
+    }
+
+    .review-card {
+      margin-top: 12px;
+      padding: 16px;
+      border: 2px solid var(--line);
+      border-left: 7px solid var(--sage);
+      border-radius: var(--radius);
+      background: var(--paper);
+    }
+
+    .review-card.missed {
+      border-left-color: var(--clay);
+    }
+
+    .review-options {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .review-option {
+      padding: 12px;
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 250, 241, .75);
+      line-height: 1.35;
+    }
+
+    .review-option.correct {
+      border-color: var(--sage);
+      background: var(--sage-2);
+      color: #1f5c34;
+      font-weight: 900;
+    }
+
+    .review-option.wrong-choice {
+      border-color: var(--clay);
+      background: var(--clay-2);
+      color: #8a2d23;
+      font-weight: 900;
+    }
+
+    .explain {
+      margin-top: 12px;
+      padding: 12px;
+      border: 2px dashed var(--line);
+      border-radius: var(--radius);
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .score-panel {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 18px;
+      align-items: center;
+      padding: 18px;
+      margin-bottom: 14px;
+      background: var(--ink);
+      color: var(--paper);
+      border-radius: var(--radius);
+    }
+
+    .score-panel strong {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3rem, 10vw, 6rem);
+      line-height: .9;
+    }
+
+    .score-panel p {
+      margin: 6px 0 0;
+      color: rgba(255, 250, 241, .78);
+      line-height: 1.45;
+    }
+
+    .flash-card {
+      display: grid;
+      place-items: center;
+      min-height: 330px;
+      padding: 24px;
+      margin: 16px 0;
+      border: 2px solid var(--line);
+      border-left: 7px solid var(--gold);
+      border-radius: var(--radius);
+      background: var(--paper);
+      text-align: center;
+    }
+
+    .flash-card h3 {
+      font-size: clamp(1.8rem, 5vw, 3.6rem);
+      line-height: 1.05;
+      max-width: 860px;
+    }
+
+    .flash-card p {
+      max-width: 880px;
+      margin: 14px auto 0;
+      color: var(--muted);
+      font-size: 1.1rem;
+      line-height: 1.48;
+    }
+
+    .library-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .empty {
+      padding: 18px;
+      border: 2px dashed var(--line);
+      border-radius: var(--radius);
+      color: var(--muted);
+      background: rgba(255, 250, 241, .72);
+      font-weight: 850;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .study-layout,
+      .detail-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .lesson-grid,
+      .dash-strip,
+      .builder-grid,
+      .library-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .unit-head {
+        grid-template-columns: auto 1fr;
+      }
+
+      .unit-actions {
+        grid-column: 1 / -1;
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .page {
+        width: min(100% - 18px, 1220px);
+        padding-top: 10px;
+      }
+
+      .hero-copy,
+      .hero-panel,
+      .quiz-shell,
+      .flash-shell,
+      .library-shell,
+      .lesson-detail {
+        padding: 14px;
+      }
+
+      .lesson-grid,
+      .dash-strip,
+      .builder-grid,
+      .library-grid,
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .topnav {
+        position: static;
+      }
+
+      .nav-btn {
+        flex: 1;
+      }
+
+      .score-panel {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <section class="hero-copy">
+        <div class="eyebrow">Whole class final prep</div>
+        <h1>Health Final Study Guide</h1>
+        <p>Every unit is broken into individual lessons, with detailed notes, flashcards, and a quiet quiz mode that grades at the end. The question bank is built from the transcript notes so you can drill the whole class without losing the depth from the single-unit guide.</p>
+      </section>
+      <aside class="hero-panel" aria-label="Study guide counts">
+        <div class="big-count">
+          <strong id="heroQuestions">0</strong>
+          <span>practice questions</span>
+        </div>
+        <div class="mini-grid">
+          <div class="mini-stat"><strong id="heroUnits">0</strong><span>units</span></div>
+          <div class="mini-stat"><strong id="heroLessons">0</strong><span>lessons</span></div>
+          <div class="mini-stat"><strong id="heroCards">0</strong><span>flashcards</span></div>
+          <div class="mini-stat"><strong id="heroTerms">0</strong><span>terms</span></div>
+        </div>
+      </aside>
+    </header>
+
+    <nav class="topnav" aria-label="Main sections">
+      <button class="nav-btn active" data-view="dashboard">Dashboard</button>
+      <button class="nav-btn" data-view="lessons">Lessons</button>
+      <button class="nav-btn" data-view="quiz">Quiz</button>
+      <button class="nav-btn" data-view="flashcards">Flashcards</button>
+      <button class="nav-btn" data-view="glossary">Glossary</button>
+      <button class="nav-btn" data-view="numbers">Numbers</button>
+      <button class="nav-btn" data-view="sources">Sources</button>
+    </nav>
+
+    <main>
+      <section id="view-dashboard" class="view active">
+        <div class="section-head">
+          <div>
+            <h2>Main Dashboard</h2>
+            <p>Units are the big folders. Lessons are the actual things you need to know. Start with a weak lesson, run a quiz, then review missed or marked questions at the end.</p>
+          </div>
+        </div>
+        <div class="dash-strip" id="dashStats"></div>
+        <div id="unitDashboard"></div>
+      </section>
+
+      <section id="view-lessons" class="view">
+        <div class="section-head">
+          <div>
+            <h2>Lesson Study</h2>
+            <p>Pick a lesson and use the detailed notes like a compact transcript. Goals, facts, terms, and numbers all stay tied to their unit and lesson.</p>
+          </div>
+          <div class="tool-row">
+            <select id="lessonUnitFilter" class="control" aria-label="Filter lessons by unit"></select>
+          </div>
+        </div>
+        <div class="study-layout">
+          <div class="lesson-list" id="lessonList"></div>
+          <article class="lesson-detail" id="lessonDetail"></article>
+        </div>
+      </section>
+
+      <section id="view-quiz" class="view">
+        <div class="section-head">
+          <div>
+            <h2>Quiz Mode</h2>
+            <p>Questions are randomized. You can mark anything during the quiz, but it will not tell you what is right or wrong until you finish and get a grade.</p>
+          </div>
+        </div>
+        <div class="quiz-shell">
+          <div id="quizBuilder">
+            <div class="builder-grid">
+              <div class="field">
+                <label for="quizScope">Scope</label>
+                <select id="quizScope" class="control"></select>
+              </div>
+              <div class="field">
+                <label for="quizLength">Length</label>
+                <select id="quizLength" class="control">
+                  <option value="25">25 questions</option>
+                  <option value="50" selected>50 questions</option>
+                  <option value="100">100 questions</option>
+                  <option value="150">150 questions</option>
+                  <option value="200">200 questions</option>
+                  <option value="all">All available</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Available</label>
+                <div class="control" id="quizAvailable">0 questions</div>
+              </div>
+            </div>
+            <div class="tool-row">
+              <button class="action secondary" id="startQuiz">Start Quiz</button>
+              <button class="ghost" id="randomWholeClass">Random 100 From Whole Class</button>
+            </div>
+          </div>
+
+          <div id="quizActive" class="hidden">
+            <div class="quiz-status">
+              <div class="meta-line" id="quizProgressText">Question 1 of 50</div>
+              <div class="progress-wrap" aria-label="Quiz progress"><div class="progress-bar" id="quizProgressBar"></div></div>
+            </div>
+            <div class="question-card" id="questionCard"></div>
+          </div>
+
+          <div id="quizResults" class="hidden"></div>
+        </div>
+      </section>
+
+      <section id="view-flashcards" class="view">
+        <div class="section-head">
+          <div>
+            <h2>Flashcards</h2>
+            <p>Cards are randomized by default and can cover the whole course, one unit, or one lesson. Flip when you are ready.</p>
+          </div>
+        </div>
+        <div class="flash-shell">
+          <div class="builder-grid">
+            <div class="field">
+              <label for="cardScope">Scope</label>
+              <select id="cardScope" class="control"></select>
+            </div>
+            <div class="field">
+              <label>Deck</label>
+              <div class="control" id="cardAvailable">0 cards</div>
+            </div>
+            <div class="field">
+              <label>Current</label>
+              <div class="control" id="cardProgress">0 of 0</div>
+            </div>
+          </div>
+          <div class="tool-row">
+            <button class="action secondary" id="startCards">Shuffle Deck</button>
+            <button class="ghost" id="flipCard">Flip</button>
+            <button class="ghost" id="prevCard">Previous</button>
+            <button class="ghost" id="nextCard">Next</button>
+          </div>
+          <div class="flash-card" id="flashCard"></div>
+        </div>
+      </section>
+
+      <section id="view-glossary" class="view">
+        <div class="section-head">
+          <div>
+            <h2>Glossary</h2>
+            <p>Search every term from every lesson. Use this when a quiz answer feels familiar but the vocabulary is fuzzy.</p>
+          </div>
+        </div>
+        <div class="library-shell">
+          <div class="tool-row">
+            <input id="glossarySearch" class="search" placeholder="Search terms, definitions, units, or lessons">
+          </div>
+          <div class="library-grid" id="glossaryList"></div>
+        </div>
+      </section>
+
+      <section id="view-numbers" class="view">
+        <div class="section-head">
+          <div>
+            <h2>Numbers And Timelines</h2>
+            <p>All the percentages, counts, weeks, days, and sequences that are easy to mix up right before a test.</p>
+          </div>
+        </div>
+        <div class="library-shell">
+          <div class="tool-row">
+            <input id="numbersSearch" class="search" placeholder="Search stats, timings, units, or lessons">
+          </div>
+          <div class="library-grid" id="numbersList"></div>
+        </div>
+      </section>
+
+      <section id="view-sources" class="view">
+        <div class="section-head">
+          <div>
+            <h2>Transcript Sources</h2>
+            <p>The full-course guide is built from the five transcript PDFs. The extracted text files are linked here so you can jump back to source material when you need the long version.</p>
+          </div>
+        </div>
+        <div class="source-grid" id="sourceList"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="whole-class-course-data.js"></script>
+  <script>
+    const COURSE = window.COURSE || [];
+
+    const SOURCES = [
+      { unit: 1, title: "Unit 1 Transcript", pages: 77, words: "37,798", href: "../tmp/transcripts/unit-1-transcript.txt" },
+      { unit: 2, title: "Unit 2 Transcript", pages: 109, words: "52,282", href: "../tmp/transcripts/unit-2-transcript.txt" },
+      { unit: 3, title: "Unit 3 Transcript", pages: 35, words: "16,212", href: "../tmp/transcripts/unit-3-transcript.txt" },
+      { unit: 4, title: "Unit 4 Transcript", pages: 94, words: "44,514", href: "../tmp/transcripts/unit-4-transcript.txt" },
+      { unit: 5, title: "Unit 5 Transcript", pages: 84, words: "39,340", href: "../tmp/transcripts/unit-5-transcript.txt" }
+    ];
+
+    const $ = (id) => document.getElementById(id);
+    const html = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[char]));
+
+    function shuffle(items) {
+      const arr = [...items];
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function normalize(value) {
+      return String(value).trim().toLowerCase().replace(/\s+/g, " ");
+    }
+
+    function uniq(values) {
+      const seen = new Set();
+      const out = [];
+      values.forEach((value) => {
+        const key = normalize(value);
+        if (!seen.has(key)) {
+          seen.add(key);
+          out.push(value);
+        }
+      });
+      return out;
+    }
+
+    const lessons = COURSE.flatMap((unit) => unit.lessons.map((lesson) => ({
+      ...lesson,
+      unitNo: unit.u,
+      unitTitle: unit.title,
+      unitShort: unit.short,
+      unitSummary: unit.summary,
+      unitTheme: unit.theme
+    })));
+
+    const terms = lessons.flatMap((lesson) => lesson.terms.map(([term, definition], index) => ({
+      id: `${lesson.id}-term-${index}`,
+      unitNo: lesson.unitNo,
+      unitTitle: lesson.unitTitle,
+      lessonId: lesson.id,
+      lessonNo: lesson.n,
+      lessonTitle: lesson.title,
+      term,
+      definition
+    })));
+
+    const facts = lessons.flatMap((lesson) => lesson.points.map((point, index) => ({
+      id: `${lesson.id}-fact-${index}`,
+      unitNo: lesson.unitNo,
+      unitTitle: lesson.unitTitle,
+      lessonId: lesson.id,
+      lessonNo: lesson.n,
+      lessonTitle: lesson.title,
+      point
+    })));
+
+    const numbers = lessons.flatMap((lesson) => lesson.nums.map(([label, value, note], index) => ({
+      id: `${lesson.id}-num-${index}`,
+      unitNo: lesson.unitNo,
+      unitTitle: lesson.unitTitle,
+      lessonId: lesson.id,
+      lessonNo: lesson.n,
+      lessonTitle: lesson.title,
+      label,
+      value,
+      note
+    })));
+
+    function optionValues(correct, primaryPool, backupPool, count = 4) {
+      const values = [correct];
+      const candidates = shuffle(uniq([...(primaryPool || []), ...(backupPool || [])]));
+      candidates.forEach((candidate) => {
+        if (values.length >= count) return;
+        if (normalize(candidate) !== normalize(correct) && !values.some((value) => normalize(value) === normalize(candidate))) {
+          values.push(candidate);
+        }
+      });
+      return shuffle(values);
+    }
+
+    function singleQuestion(id, meta, prompt, correct, primaryPool, backupPool, explanation) {
+      const options = optionValues(correct, primaryPool, backupPool);
+      return {
+        id,
+        type: "single",
+        ...meta,
+        prompt,
+        options,
+        answers: [options.findIndex((option) => normalize(option) === normalize(correct))],
+        explanation
+      };
+    }
+
+    function multiQuestion(id, meta, prompt, correctTexts, distractorTexts, explanation) {
+      const choices = shuffle(uniq([...correctTexts, ...distractorTexts]).slice(0, 5));
+      return {
+        id,
+        type: "multi",
+        ...meta,
+        prompt,
+        options: choices,
+        answers: correctTexts.map((text) => choices.findIndex((choice) => normalize(choice) === normalize(text))).filter((index) => index >= 0).sort((a, b) => a - b),
+        explanation
+      };
+    }
+
+    function metaFrom(item, topic) {
+      return {
+        unitNo: item.unitNo,
+        unitTitle: item.unitTitle,
+        lessonId: item.lessonId,
+        lessonNo: item.lessonNo,
+        lessonTitle: item.lessonTitle,
+        topic
+      };
+    }
+
+    function buildQuestionBank() {
+      const bank = [];
+      const allTermNames = terms.map((item) => item.term);
+      const allDefinitions = terms.map((item) => item.definition);
+      const allFactTexts = facts.map((item) => item.point);
+      const allNumberValues = numbers.map((item) => item.value);
+      const allNumberLabels = numbers.map((item) => item.label);
+
+      terms.forEach((item) => {
+        const sameUnitTerms = terms.filter((term) => term.unitNo === item.unitNo).map((term) => term.term);
+        const sameLessonDefinitions = terms.filter((term) => term.lessonId === item.lessonId).map((term) => term.definition);
+        bank.push(singleQuestion(
+          `${item.id}-name`,
+          metaFrom(item, "vocabulary"),
+          `Which term means: ${item.definition}?`,
+          item.term,
+          sameUnitTerms,
+          allTermNames,
+          `${item.term} means ${item.definition}.`
+        ));
+        bank.push(singleQuestion(
+          `${item.id}-definition`,
+          metaFrom(item, "vocabulary"),
+          `What does ${item.term} mean?`,
+          item.definition,
+          sameLessonDefinitions,
+          allDefinitions,
+          `${item.term}: ${item.definition}.`
+        ));
+      });
+
+      facts.forEach((item) => {
+        const sameUnitFacts = facts.filter((fact) => fact.unitNo === item.unitNo && fact.lessonId !== item.lessonId).map((fact) => fact.point);
+        bank.push(singleQuestion(
+          `${item.id}-fact`,
+          metaFrom(item, "lesson detail"),
+          `Which statement best belongs with Unit ${item.unitNo}, Lesson ${item.lessonNo}: ${item.lessonTitle}?`,
+          item.point,
+          sameUnitFacts,
+          allFactTexts,
+          item.point
+        ));
+      });
+
+      numbers.forEach((item) => {
+        const sameUnitValues = numbers.filter((num) => num.unitNo === item.unitNo).map((num) => num.value);
+        const sameUnitLabels = numbers.filter((num) => num.unitNo === item.unitNo).map((num) => num.label);
+        bank.push(singleQuestion(
+          `${item.id}-value`,
+          metaFrom(item, "numbers and timing"),
+          `Which number, timing, or amount matches ${item.label}?`,
+          item.value,
+          sameUnitValues,
+          allNumberValues,
+          `${item.label}: ${item.value}. ${item.note}`
+        ));
+        bank.push(singleQuestion(
+          `${item.id}-label`,
+          metaFrom(item, "numbers and timing"),
+          `What does ${item.value} refer to in this course?`,
+          item.label,
+          sameUnitLabels,
+          allNumberLabels,
+          `${item.value} refers to ${item.label}. ${item.note}`
+        ));
+      });
+
+      lessons.forEach((lesson) => {
+        if (lesson.points.length < 3) return;
+        const correct = shuffle(lesson.points).slice(0, 3);
+        const sameUnitDistractors = facts
+          .filter((fact) => fact.unitNo === lesson.unitNo && fact.lessonId !== lesson.id)
+          .map((fact) => fact.point);
+        const distractors = optionValues("__correct__", sameUnitDistractors, facts.map((fact) => fact.point), 3)
+          .filter((value) => value !== "__correct__")
+          .slice(0, 2);
+        bank.push(multiQuestion(
+          `${lesson.id}-select-true`,
+          {
+            unitNo: lesson.unitNo,
+            unitTitle: lesson.unitTitle,
+            lessonId: lesson.id,
+            lessonNo: lesson.n,
+            lessonTitle: lesson.title,
+            topic: "select three"
+          },
+          `Select three true ideas from Unit ${lesson.unitNo}, Lesson ${lesson.n}: ${lesson.title}.`,
+          correct,
+          distractors,
+          `The true ideas are: ${correct.join("; ")}.`
+        ));
+      });
+
+      return bank.filter((question) => question.options.length >= 2 && question.answers.length > 0);
+    }
+
+    const QUESTION_BANK = buildQuestionBank();
+
+    const FLASHCARDS = [
+      ...terms.map((item) => ({
+        id: `card-${item.id}`,
+        unitNo: item.unitNo,
+        unitTitle: item.unitTitle,
+        lessonId: item.lessonId,
+        lessonNo: item.lessonNo,
+        lessonTitle: item.lessonTitle,
+        kind: "term",
+        front: item.term,
+        back: item.definition
+      })),
+      ...numbers.map((item) => ({
+        id: `card-${item.id}`,
+        unitNo: item.unitNo,
+        unitTitle: item.unitTitle,
+        lessonId: item.lessonId,
+        lessonNo: item.lessonNo,
+        lessonTitle: item.lessonTitle,
+        kind: "number",
+        front: item.label,
+        back: `${item.value}: ${item.note}`
+      })),
+      ...facts.map((item) => ({
+        id: `card-${item.id}`,
+        unitNo: item.unitNo,
+        unitTitle: item.unitTitle,
+        lessonId: item.lessonId,
+        lessonNo: item.lessonNo,
+        lessonTitle: item.lessonTitle,
+        kind: "fact",
+        front: `Unit ${item.unitNo}, Lesson ${item.lessonNo}`,
+        back: item.point
+      }))
+    ];
+
+    const state = {
+      currentLessonId: lessons[0]?.id,
+      quiz: {
+        set: [],
+        index: 0,
+        answers: {},
+        marked: new Set(),
+        complete: false
+      },
+      cards: {
+        deck: [],
+        index: 0,
+        flipped: false
+      },
+      reviewMode: "missed"
+    };
+
+    function filterByScope(items, scope) {
+      if (!scope || scope === "all") return items;
+      if (scope.startsWith("unit:")) {
+        const unitNo = Number(scope.split(":")[1]);
+        return items.filter((item) => item.unitNo === unitNo);
+      }
+      if (scope.startsWith("lesson:")) {
+        const lessonId = scope.split(":")[1];
+        return items.filter((item) => item.lessonId === lessonId || item.id === lessonId);
+      }
+      return items;
+    }
+
+    function scopeLabel(scope) {
+      if (!scope || scope === "all") return "Whole class";
+      if (scope.startsWith("unit:")) {
+        const unit = COURSE.find((item) => item.u === Number(scope.split(":")[1]));
+        return unit ? `Unit ${unit.u}: ${unit.short || unit.title}` : "Unit";
+      }
+      if (scope.startsWith("lesson:")) {
+        const lesson = lessons.find((item) => item.id === scope.split(":")[1]);
+        return lesson ? `Unit ${lesson.unitNo}, Lesson ${lesson.lessonNo || lesson.n}: ${lesson.title}` : "Lesson";
+      }
+      return "Selected";
+    }
+
+    function fillScopeSelect(select) {
+      select.innerHTML = `<option value="all">Whole class</option>`;
+      COURSE.forEach((unit) => {
+        const unitOption = document.createElement("option");
+        unitOption.value = `unit:${unit.u}`;
+        unitOption.textContent = `Unit ${unit.u}: ${unit.short || unit.title}`;
+        select.appendChild(unitOption);
+
+        const group = document.createElement("optgroup");
+        group.label = `Unit ${unit.u} lessons`;
+        unit.lessons.forEach((lesson) => {
+          const option = document.createElement("option");
+          option.value = `lesson:${lesson.id}`;
+          option.textContent = `Lesson ${lesson.n}: ${lesson.title}`;
+          group.appendChild(option);
+        });
+        select.appendChild(group);
+      });
+    }
+
+    function renderCounts() {
+      $("heroQuestions").textContent = QUESTION_BANK.length.toLocaleString();
+      $("heroUnits").textContent = COURSE.length;
+      $("heroLessons").textContent = lessons.length;
+      $("heroCards").textContent = FLASHCARDS.length.toLocaleString();
+      $("heroTerms").textContent = terms.length.toLocaleString();
+
+      const stats = [
+        [COURSE.length, "units"],
+        [lessons.length, "individual lessons"],
+        [QUESTION_BANK.length.toLocaleString(), "practice questions"],
+        [FLASHCARDS.length.toLocaleString(), "flashcards"]
+      ];
+
+      $("dashStats").innerHTML = stats.map(([value, label]) => `
+        <div class="dash-stat">
+          <strong>${html(value)}</strong>
+          <span>${html(label)}</span>
+        </div>
+      `).join("");
+    }
+
+    function renderDashboard() {
+      $("unitDashboard").innerHTML = COURSE.map((unit) => {
+        const unitLessons = lessons.filter((lesson) => lesson.unitNo === unit.u);
+        const unitQuestions = QUESTION_BANK.filter((question) => question.unitNo === unit.u).length;
+        const cards = unitLessons.map((lesson) => {
+          const lessonQuestions = QUESTION_BANK.filter((question) => question.lessonId === lesson.id).length;
+          return `
+            <article class="lesson-card">
+              <div class="lesson-meta">Unit ${lesson.unitNo} · Lesson ${lesson.n}</div>
+              <h4>${html(lesson.title)}</h4>
+              <p>${html(lesson.q)}</p>
+              <div class="chips">
+                <span class="chip">${lesson.goals.length} goals</span>
+                <span class="chip">${lesson.points.length} notes</span>
+                <span class="chip">${lesson.terms.length} terms</span>
+                <span class="chip">${lessonQuestions} questions</span>
+              </div>
+              <div class="card-actions">
+                <button class="ghost" data-action="studyLesson" data-lesson="${lesson.id}">Study</button>
+                <button class="ghost" data-action="quizLesson" data-lesson="${lesson.id}">Quiz</button>
+                <button class="ghost" data-action="cardsLesson" data-lesson="${lesson.id}">Cards</button>
+              </div>
+            </article>
+          `;
+        }).join("");
+
+        return `
+          <section class="unit-band">
+            <div class="unit-head">
+              <div class="unit-number">${unit.u}</div>
+              <div>
+                <div class="lesson-meta">Unit ${unit.u} · ${unitLessons.length} lessons · ${unitQuestions} questions</div>
+                <h3>${html(unit.title)}</h3>
+                <p>${html(unit.summary)}</p>
+              </div>
+              <div class="unit-actions">
+                <button class="ghost" data-action="quizUnit" data-unit="${unit.u}">Quiz Unit</button>
+                <button class="ghost" data-action="cardsUnit" data-unit="${unit.u}">Cards</button>
+              </div>
+            </div>
+            <div class="lesson-grid">${cards}</div>
+          </section>
+        `;
+      }).join("");
+    }
+
+    function renderLessonFilter() {
+      const filter = $("lessonUnitFilter");
+      filter.innerHTML = `<option value="all">All units</option>` + COURSE.map((unit) => `
+        <option value="${unit.u}">Unit ${unit.u}: ${html(unit.short || unit.title)}</option>
+      `).join("");
+    }
+
+    function renderLessonList() {
+      const filter = $("lessonUnitFilter").value || "all";
+      const filteredLessons = filter === "all" ? lessons : lessons.filter((lesson) => lesson.unitNo === Number(filter));
+      $("lessonList").innerHTML = filteredLessons.map((lesson) => `
+        <button class="lesson-picker ${lesson.id === state.currentLessonId ? "active" : ""}" data-action="studyLesson" data-lesson="${lesson.id}">
+          <span class="lesson-meta">Unit ${lesson.unitNo} · Lesson ${lesson.n}</span><br>
+          ${html(lesson.title)}
+        </button>
+      `).join("");
+
+      if (!filteredLessons.some((lesson) => lesson.id === state.currentLessonId) && filteredLessons[0]) {
+        state.currentLessonId = filteredLessons[0].id;
+        renderLessonList();
+      }
+    }
+
+    function renderLessonDetail() {
+      const lesson = lessons.find((item) => item.id === state.currentLessonId) || lessons[0];
+      if (!lesson) return;
+      const lessonQuestions = QUESTION_BANK.filter((question) => question.lessonId === lesson.id).length;
+      $("lessonDetail").innerHTML = `
+        <div class="meta-line">Unit ${lesson.unitNo}: ${html(lesson.unitTitle)} · Lesson ${lesson.n}</div>
+        <h2>${html(lesson.title)}</h2>
+        <p class="lesson-question">${html(lesson.q)}</p>
+        <div class="tool-row" style="margin-bottom: 14px;">
+          <button class="action secondary" data-action="quizLesson" data-lesson="${lesson.id}">Quiz this lesson</button>
+          <button class="ghost" data-action="cardsLesson" data-lesson="${lesson.id}">Study flashcards</button>
+          <span class="chip">${lessonQuestions} generated questions</span>
+        </div>
+        <div class="detail-grid">
+          <div class="detail-block">
+            <h3>What To Know</h3>
+            <ol class="study-list">
+              ${lesson.points.map((point) => `<li>${html(point)}</li>`).join("")}
+            </ol>
+          </div>
+          <div class="term-list">
+            <div class="detail-block">
+              <h3>Lesson Goals</h3>
+              <ul class="study-list">
+                ${lesson.goals.map((goal) => `<li>${html(goal)}</li>`).join("")}
+              </ul>
+            </div>
+            <div class="detail-block">
+              <h3>Key Terms</h3>
+              <div class="term-list">
+                ${lesson.terms.map(([term, definition]) => `
+                  <div class="term-item"><strong>${html(term)}</strong><p>${html(definition)}</p></div>
+                `).join("")}
+              </div>
+            </div>
+            <div class="detail-block">
+              <h3>Numbers</h3>
+              <div class="numbers-list">
+                ${lesson.nums.map(([label, value, note]) => `
+                  <div class="number-item"><strong>${html(label)}</strong><p><b>${html(value)}</b> - ${html(note)}</p></div>
+                `).join("")}
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function switchView(viewName) {
+      document.querySelectorAll(".view").forEach((view) => view.classList.toggle("active", view.id === `view-${viewName}`));
+      document.querySelectorAll(".nav-btn").forEach((button) => button.classList.toggle("active", button.dataset.view === viewName));
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function updateQuizAvailable() {
+      const scope = $("quizScope").value;
+      $("quizAvailable").textContent = `${filterByScope(QUESTION_BANK, scope).length.toLocaleString()} questions`;
+    }
+
+    function startQuiz(scope = $("quizScope").value, lengthValue = $("quizLength").value) {
+      $("quizScope").value = scope;
+      const pool = shuffle(filterByScope(QUESTION_BANK, scope));
+      const wanted = lengthValue === "all" ? pool.length : Number(lengthValue);
+      state.quiz = {
+        set: pool.slice(0, Math.min(wanted, pool.length)),
+        index: 0,
+        answers: {},
+        marked: new Set(),
+        complete: false
+      };
+
+      if (!state.quiz.set.length) {
+        $("quizResults").classList.remove("hidden");
+        $("quizResults").innerHTML = `<div class="empty">No questions are available for that scope yet.</div>`;
+        return;
+      }
+
+      $("quizBuilder").classList.add("hidden");
+      $("quizResults").classList.add("hidden");
+      $("quizActive").classList.remove("hidden");
+      renderQuestion();
+      switchView("quiz");
+    }
+
+    function selectedAnswers(question) {
+      return state.quiz.answers[question.id] || [];
+    }
+
+    function renderQuestion() {
+      const quiz = state.quiz;
+      const question = quiz.set[quiz.index];
+      const selected = selectedAnswers(question);
+      const marked = quiz.marked.has(question.id);
+      const progress = ((quiz.index + 1) / quiz.set.length) * 100;
+      $("quizProgressText").textContent = `Question ${quiz.index + 1} of ${quiz.set.length} · ${scopeLabel($("quizScope").value)}`;
+      $("quizProgressBar").style.width = `${progress}%`;
+      $("questionCard").innerHTML = `
+        <div class="meta-line">Unit ${question.unitNo} · Lesson ${question.lessonNo} · ${html(question.topic)}</div>
+        <h3>${html(question.prompt)}</h3>
+        <p class="hint">${question.type === "multi" ? `Select ${question.answers.length}. It will be graded when you finish.` : "Choose the best answer. It will be graded when you finish."}</p>
+        <div class="options">
+          ${question.options.map((option, index) => `
+            <button class="option-btn ${selected.includes(index) ? "selected" : ""}" data-option="${index}">
+              ${html(option)}
+            </button>
+          `).join("")}
+        </div>
+        <div class="tool-row">
+          <button class="ghost ${marked ? "marked" : ""}" id="markQuestion">${marked ? "Marked" : "Mark question"}</button>
+          <button class="ghost" id="prevQuestion" ${quiz.index === 0 ? "disabled" : ""}>Previous</button>
+          <button class="action secondary" id="nextQuestion">${quiz.index === quiz.set.length - 1 ? "Finish and grade" : "Next"}</button>
+        </div>
+      `;
+
+      document.querySelectorAll("[data-option]").forEach((button) => {
+        button.addEventListener("click", () => chooseOption(Number(button.dataset.option)));
+      });
+      $("markQuestion").addEventListener("click", toggleMark);
+      $("prevQuestion").addEventListener("click", previousQuestion);
+      $("nextQuestion").addEventListener("click", nextQuestion);
+    }
+
+    function chooseOption(index) {
+      const question = state.quiz.set[state.quiz.index];
+      const current = selectedAnswers(question);
+      if (question.type === "multi") {
+        const exists = current.includes(index);
+        const next = exists ? current.filter((item) => item !== index) : [...current, index];
+        state.quiz.answers[question.id] = next.sort((a, b) => a - b);
+      } else {
+        state.quiz.answers[question.id] = [index];
+      }
+      renderQuestion();
+    }
+
+    function toggleMark() {
+      const question = state.quiz.set[state.quiz.index];
+      if (state.quiz.marked.has(question.id)) {
+        state.quiz.marked.delete(question.id);
+      } else {
+        state.quiz.marked.add(question.id);
+      }
+      renderQuestion();
+    }
+
+    function previousQuestion() {
+      if (state.quiz.index > 0) {
+        state.quiz.index -= 1;
+        renderQuestion();
+      }
+    }
+
+    function nextQuestion() {
+      if (state.quiz.index < state.quiz.set.length - 1) {
+        state.quiz.index += 1;
+        renderQuestion();
+      } else {
+        finishQuiz();
+      }
+    }
+
+    function answerText(question, indexes) {
+      if (!indexes || !indexes.length) return "No answer";
+      return indexes.map((index) => question.options[index]).filter(Boolean).join("; ");
+    }
+
+    function isCorrect(question) {
+      const selected = selectedAnswers(question).slice().sort((a, b) => a - b);
+      const answers = question.answers.slice().sort((a, b) => a - b);
+      return selected.length === answers.length && selected.every((value, index) => value === answers[index]);
+    }
+
+    function finishQuiz() {
+      state.quiz.complete = true;
+      $("quizActive").classList.add("hidden");
+      $("quizBuilder").classList.remove("hidden");
+      $("quizResults").classList.remove("hidden");
+      renderResults("missed");
+    }
+
+    function renderResults(mode = state.reviewMode) {
+      state.reviewMode = mode;
+      const total = state.quiz.set.length;
+      const correct = state.quiz.set.filter(isCorrect).length;
+      const percent = total ? Math.round((correct / total) * 100) : 0;
+      const missed = total - correct;
+      const marked = state.quiz.set.filter((question) => state.quiz.marked.has(question.id)).length;
+      let reviewSet = state.quiz.set;
+      if (mode === "missed") reviewSet = reviewSet.filter((question) => !isCorrect(question));
+      if (mode === "marked") reviewSet = reviewSet.filter((question) => state.quiz.marked.has(question.id));
+
+      $("quizResults").innerHTML = `
+        <div class="score-panel">
+          <strong>${percent}%</strong>
+          <div>
+            <div class="eyebrow">Quiz grade</div>
+            <h3>${correct} correct out of ${total}</h3>
+            <p>${missed} missed · ${marked} marked · ${html(scopeLabel($("quizScope").value))}</p>
+          </div>
+        </div>
+        <div class="tool-row">
+          <button class="ghost ${mode === "missed" ? "active" : ""}" data-review="missed">Review missed (${missed})</button>
+          <button class="ghost ${mode === "marked" ? "active" : ""}" data-review="marked">Review marked (${marked})</button>
+          <button class="ghost ${mode === "all" ? "active" : ""}" data-review="all">Review all (${total})</button>
+          <button class="action gold" id="exportCsv">Export spreadsheet</button>
+          <button class="action secondary" id="retakeQuiz">Retake random quiz</button>
+        </div>
+        <div id="reviewList">
+          ${reviewSet.length ? reviewSet.map(renderReviewCard).join("") : `<div class="empty">Nothing to show here. That is a very good sign.</div>`}
+        </div>
+      `;
+
+      document.querySelectorAll("[data-review]").forEach((button) => {
+        button.addEventListener("click", () => renderResults(button.dataset.review));
+      });
+      $("exportCsv").addEventListener("click", exportCsv);
+      $("retakeQuiz").addEventListener("click", () => startQuiz($("quizScope").value, $("quizLength").value));
+    }
+
+    function renderReviewCard(question, index) {
+      const correct = isCorrect(question);
+      const selected = selectedAnswers(question);
+      const marked = state.quiz.marked.has(question.id);
+      return `
+        <article class="review-card ${correct ? "correct" : "missed"}">
+          <div class="meta-line">Unit ${question.unitNo} · Lesson ${question.lessonNo} · ${correct ? "Correct" : "Missed"}${marked ? " · Marked" : ""}</div>
+          <h3 style="margin-top: 8px;">${index + 1}. ${html(question.prompt)}</h3>
+          <div class="review-options">
+            ${question.options.map((option, optionIndex) => {
+              const isAnswer = question.answers.includes(optionIndex);
+              const isSelected = selected.includes(optionIndex);
+              const classes = [
+                "review-option",
+                isAnswer ? "correct" : "",
+                isSelected && !isAnswer ? "wrong-choice" : ""
+              ].filter(Boolean).join(" ");
+              const label = isAnswer ? "Correct answer: " : (isSelected ? "Your answer: " : "");
+              return `<div class="${classes}">${html(label)}${html(option)}</div>`;
+            }).join("")}
+          </div>
+          <div class="explain">
+            <strong>Your answer:</strong> ${html(answerText(question, selected))}<br>
+            <strong>Correct answer:</strong> ${html(answerText(question, question.answers))}<br>
+            <strong>Why:</strong> ${html(question.explanation)}
+          </div>
+        </article>
+      `;
+    }
+
+    function exportCsv() {
+      const total = state.quiz.set.length;
+      const correct = state.quiz.set.filter(isCorrect).length;
+      const percent = total ? Math.round((correct / total) * 100) : 0;
+      const rows = [
+        ["Health Final Quiz Results"],
+        ["Scope", scopeLabel($("quizScope").value)],
+        ["Score", `${correct}/${total}`],
+        ["Percent", `${percent}%`],
+        [],
+        ["Unit", "Lesson", "Topic", "Question", "Your answer", "Correct answer", "Result", "Marked", "Explanation"]
+      ];
+
+      state.quiz.set.forEach((question) => {
+        rows.push([
+          `Unit ${question.unitNo}: ${question.unitTitle}`,
+          `Lesson ${question.lessonNo}: ${question.lessonTitle}`,
+          question.topic,
+          question.prompt,
+          answerText(question, selectedAnswers(question)),
+          answerText(question, question.answers),
+          isCorrect(question) ? "Correct" : "Missed",
+          state.quiz.marked.has(question.id) ? "Marked" : "",
+          question.explanation
+        ]);
+      });
+
+      const csv = rows.map((row) => row.map((cell) => `"${String(cell ?? "").replace(/"/g, '""')}"`).join(",")).join("\n");
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `health-final-quiz-${percent}-percent.csv`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    function updateCardAvailable() {
+      const scope = $("cardScope").value;
+      $("cardAvailable").textContent = `${filterByScope(FLASHCARDS, scope).length.toLocaleString()} cards`;
+    }
+
+    function startCards(scope = $("cardScope").value) {
+      $("cardScope").value = scope;
+      state.cards.deck = shuffle(filterByScope(FLASHCARDS, scope));
+      state.cards.index = 0;
+      state.cards.flipped = false;
+      renderFlashcard();
+      switchView("flashcards");
+    }
+
+    function renderFlashcard() {
+      const deck = state.cards.deck;
+      const card = deck[state.cards.index];
+      $("cardProgress").textContent = deck.length ? `${state.cards.index + 1} of ${deck.length}` : "0 of 0";
+      if (!card) {
+        $("flashCard").innerHTML = `<div><h3>No cards yet</h3><p>Pick a different scope and shuffle the deck.</p></div>`;
+        return;
+      }
+      const showingBack = state.cards.flipped;
+      $("flashCard").innerHTML = `
+        <div>
+          <div class="meta-line">Unit ${card.unitNo} · Lesson ${card.lessonNo} · ${html(card.kind)}</div>
+          <h3>${html(showingBack ? card.back : card.front)}</h3>
+          <p>${showingBack ? html(card.front) : "Flip when you are ready for the answer."}</p>
+        </div>
+      `;
+    }
+
+    function renderGlossary() {
+      const query = normalize($("glossarySearch").value);
+      const filtered = terms.filter((item) => {
+        const haystack = normalize(`${item.term} ${item.definition} ${item.unitTitle} ${item.lessonTitle}`);
+        return haystack.includes(query);
+      });
+      $("glossaryList").innerHTML = filtered.length ? filtered.map((item) => `
+        <article class="term-item">
+          <div class="meta-line">Unit ${item.unitNo} · Lesson ${item.lessonNo}</div>
+          <strong>${html(item.term)}</strong>
+          <p>${html(item.definition)}</p>
+        </article>
+      `).join("") : `<div class="empty">No terms match that search.</div>`;
+    }
+
+    function renderNumbers() {
+      const query = normalize($("numbersSearch").value);
+      const filtered = numbers.filter((item) => {
+        const haystack = normalize(`${item.label} ${item.value} ${item.note} ${item.unitTitle} ${item.lessonTitle}`);
+        return haystack.includes(query);
+      });
+      $("numbersList").innerHTML = filtered.length ? filtered.map((item) => `
+        <article class="number-item">
+          <div class="meta-line">Unit ${item.unitNo} · Lesson ${item.lessonNo}</div>
+          <strong>${html(item.label)}</strong>
+          <p><b>${html(item.value)}</b> - ${html(item.note)}</p>
+        </article>
+      `).join("") : `<div class="empty">No numbers match that search.</div>`;
+    }
+
+    function renderSources() {
+      $("sourceList").innerHTML = SOURCES.map((source) => `
+        <article class="source-card">
+          <div class="meta-line">Unit ${source.unit}</div>
+          <h3>${html(source.title)}</h3>
+          <p>${source.pages} pages · ${source.words} extracted words</p>
+          <p style="margin-top: 8px;"><a href="${html(source.href)}">Open extracted transcript text</a></p>
+        </article>
+      `).join("");
+    }
+
+    function handleAction(action, target) {
+      if (action === "studyLesson") {
+        state.currentLessonId = target.dataset.lesson;
+        renderLessonList();
+        renderLessonDetail();
+        switchView("lessons");
+      }
+      if (action === "quizLesson") {
+        $("quizLength").value = "50";
+        startQuiz(`lesson:${target.dataset.lesson}`, "50");
+      }
+      if (action === "cardsLesson") {
+        startCards(`lesson:${target.dataset.lesson}`);
+      }
+      if (action === "quizUnit") {
+        $("quizLength").value = "100";
+        startQuiz(`unit:${target.dataset.unit}`, "100");
+      }
+      if (action === "cardsUnit") {
+        startCards(`unit:${target.dataset.unit}`);
+      }
+    }
+
+    function init() {
+      renderCounts();
+      renderDashboard();
+      renderLessonFilter();
+      renderLessonList();
+      renderLessonDetail();
+      fillScopeSelect($("quizScope"));
+      fillScopeSelect($("cardScope"));
+      updateQuizAvailable();
+      updateCardAvailable();
+      renderGlossary();
+      renderNumbers();
+      renderSources();
+      startCards("all");
+      switchView("dashboard");
+
+      document.querySelectorAll(".nav-btn").forEach((button) => {
+        button.addEventListener("click", () => switchView(button.dataset.view));
+      });
+
+      document.body.addEventListener("click", (event) => {
+        const target = event.target.closest("[data-action]");
+        if (target) handleAction(target.dataset.action, target);
+      });
+
+      $("lessonUnitFilter").addEventListener("change", () => {
+        renderLessonList();
+        renderLessonDetail();
+      });
+
+      $("quizScope").addEventListener("change", updateQuizAvailable);
+      $("startQuiz").addEventListener("click", () => startQuiz());
+      $("randomWholeClass").addEventListener("click", () => {
+        $("quizScope").value = "all";
+        $("quizLength").value = "100";
+        startQuiz("all", "100");
+      });
+
+      $("cardScope").addEventListener("change", updateCardAvailable);
+      $("startCards").addEventListener("click", () => startCards());
+      $("flipCard").addEventListener("click", () => {
+        state.cards.flipped = !state.cards.flipped;
+        renderFlashcard();
+      });
+      $("prevCard").addEventListener("click", () => {
+        if (!state.cards.deck.length) return;
+        state.cards.index = (state.cards.index - 1 + state.cards.deck.length) % state.cards.deck.length;
+        state.cards.flipped = false;
+        renderFlashcard();
+      });
+      $("nextCard").addEventListener("click", () => {
+        if (!state.cards.deck.length) return;
+        state.cards.index = (state.cards.index + 1) % state.cards.deck.length;
+        state.cards.flipped = false;
+        renderFlashcard();
+      });
+
+      $("glossarySearch").addEventListener("input", renderGlossary);
+      $("numbersSearch").addEventListener("input", renderNumbers);
+    }
+
+    init();
+  </script>
+</body>
+</html>
